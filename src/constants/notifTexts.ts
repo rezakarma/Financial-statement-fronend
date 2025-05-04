@@ -1,0 +1,1 @@
+export const ERROR_OCCURRED = "خطایی رخ داده است";

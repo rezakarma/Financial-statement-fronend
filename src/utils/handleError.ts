@@ -1,6 +1,6 @@
+import { ERROR_OCCURRED } from "@/constants/notifTexts";
 import axios, { AxiosError } from "axios";
 import toast from "react-hot-toast";
-import { ERROR_OCCURRED } from "@/constants/notifTexts";
 
 interface ErrorResponse {
     message?: string;

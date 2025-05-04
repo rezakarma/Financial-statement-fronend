@@ -10,7 +10,7 @@ export async function apiCaller<T, H = object>(
     withCredentials: boolean = true,
     showError = true,
     headers?: H
-): Promise<T> {
+): Promise<T | undefined> {
     try {
         let response: AxiosResponse<T>;
 
