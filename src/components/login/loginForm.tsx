@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -33,7 +33,7 @@ const LoginForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
         <FormField
           control={form.control}
           name="userName"
@@ -60,7 +60,9 @@ const LoginForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit">ورود</Button>
+        <Button className="w-full" type="submit">
+          ورود
+        </Button>
       </form>
     </Form>
   );

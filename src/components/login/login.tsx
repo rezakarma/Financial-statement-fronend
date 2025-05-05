@@ -1,5 +1,5 @@
-"use client"
-import LoginPage from "@/app/login/page";
+"use client";
+
 import {
   Card,
   CardContent,
@@ -8,20 +8,21 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import LoginForm from "./loginForm";
 
 const Login = () => {
   return (
-    <Card>
+    <Card className="w-4/5 sm:w-2/3 lg:w-[500px]">
       <CardHeader>
-        <CardTitle>Card Title</CardTitle>
-        <CardDescription>Card Description</CardDescription>
+        <CardTitle>ورود به سامانه</CardTitle>
+        <CardDescription>
+          برای ورود به سیستم اطالاعت خود را وارد کنید.
+        </CardDescription>
       </CardHeader>
       <CardContent>
-        <LoginPage />
+        <LoginForm />
       </CardContent>
-      <CardFooter>
-        <p>Card Footer</p>
-      </CardFooter>
+      <CardFooter></CardFooter>
     </Card>
   );
 };
