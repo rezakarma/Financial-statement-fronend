@@ -14,7 +14,15 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import toast from "react-hot-toast";
+import { notFound, useSearchParams, useRouter } from "next/navigation";
+import { SET_COOKIE } from "@/constants/urls";
+import http from "@/services/httpServices";
+import axios from "axios";
+
 const LoginForm = () => {
+  const router = useRouter();
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -23,7 +31,6 @@ const LoginForm = () => {
       password: "",
     },
   });
-
 
   const encryptWithPublicKey = async (
     message: string,
@@ -87,11 +94,80 @@ const LoginForm = () => {
   };
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof loginSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-  }
+  const onSubmit = async (values: z.infer<typeof loginSchema>) => {
+    try {
+      const encryptedUsername = await encryptWithPublicKey(
+        values.userName,
+        process.env.NEXT_PUBLIC_RSA_PUBLIC_KEY!
+      );
+      const encryptedPassword = await encryptWithPublicKey(
+        values.password,
+        process.env.NEXT_PUBLIC_RSA_PUBLIC_KEY!
+      );
+
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          encryptedUsername,
+          encryptedPassword,
+        }),
+      });
+      // const response = await axios.post("/login", {
+      //   encryptedUsername,
+      //   encryptedPassword,
+      // });
+
+      if (!response.ok) return;
+
+      const result = await response.json();
+
+      if (!result.status) throw Error(result.message);
+
+      if (result && result.data && result.data.uid) {
+        const setCookie = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}${SET_COOKIE}`,
+          {
+            method: "POST",
+            credentials: "include",
+            // headers: {
+            //   Authorization: "Bearer " + result.token,
+            // },
+            body: JSON.stringify({
+              uid: result.data.uid,
+            }),
+          }
+        );
+
+        if (!setCookie.ok) throw Error("خطایی رخ داده است");
+
+        console.log("setCookie", setCookie)
+
+        if (result.message && setCookie.ok) {
+          toast.success(result.message);
+        }
+
+        // redirection
+      }
+      if (result.error) {
+        throw Error(result.error);
+      }
+    } catch (error) {
+      if (error instanceof Error && error.message.startsWith("NEXT_REDIRECT")) {
+        // Re-throw the error to let Next.js handle the redirect
+        throw error;
+      }
+      console.log(error);
+
+      if (error instanceof Error) {
+        toast.error(error.message);
+      } else {
+        toast.error("خطایی رخ داده است");
+      }
+    }
+  };
 
   return (
     <Form {...form}>
