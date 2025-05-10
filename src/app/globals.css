@@ -148,3 +148,23 @@
 * {
   direction: rtl;
 }
+
+.univer-container {
+  height: 80vh;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+.save-button {
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 16px;
+}
+
+.save-button:hover {
+  background-color: #45a049;
+}
