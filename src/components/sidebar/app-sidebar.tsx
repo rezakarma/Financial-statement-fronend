@@ -166,7 +166,7 @@ export function AppSidebar() {
 
   return (
     <Sidebar side="right" collapsible="icon" className="text-2xl">
-      <SidebarHeader className={state === "collapsed" ? "hidden" : ""}>
+      {/* <SidebarHeader className={state === "collapsed" ? "hidden" : ""}>
         <SidebarMenu>
           <SidebarMenuItem className="h-full text-right mt-2">
             <div className="text-3xl font-bold flex items-center gap-2">
@@ -181,8 +181,8 @@ export function AppSidebar() {
             </Card>
           </SidebarMenuItem>
         </SidebarMenu>
-      </SidebarHeader>
-      <SidebarContent className="overflow-x-visible overflow-y-auto">
+      </SidebarHeader> */}
+      <SidebarContent className="overflow-hidden overflow-y-auto">
         {items.map((item, i) => {
           if (isMenuGroup(item)) {
             return (
