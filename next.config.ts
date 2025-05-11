@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  transpilePackages: [
+    "@syncfusion/ej2-base",
+    "@syncfusion/ej2-react-base",
+     "@syncfusion/ej2-spreadsheet",
+    "@syncfusion/ej2-react-spreadsheet",
+  ],
 };
 
 export default nextConfig;
