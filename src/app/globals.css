@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "~x-data-spreadsheet/dist/xspreadsheet.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -167,11 +168,11 @@
 
 .save-button:hover {
   background-color: #45a049;
-.error .clip .shadow {
-  height: 180px;
+  .error .clip .shadow {
+    height: 180px;
+  }
 }
-}F
-.error .clip:nth-of-type(2) .shadow {
+F .error .clip:nth-of-type(2) .shadow {
   width: 130px;
 }
 
@@ -301,21 +302,8 @@
   cursor: pointer;
 }
 
-
-@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
-@import "../node_modules/@syncfusion/ej2-buttons/styles/material.css";
-@import "../node_modules/@syncfusion/ej2-dropdowns/styles/material.css";
-@import "../node_modules/@syncfusion/ej2-inputs/styles/material.css";
-@import "../node_modules/@syncfusion/ej2-navigations/styles/material.css";
-@import "../node_modules/@syncfusion/ej2-popups/styles/material.css";
-@import "../node_modules/@syncfusion/ej2-react-spreadsheet/styles/material.css";
-
-
-/* app/globals.css */
-@import "@syncfusion/ej2-base/styles/material.css";
-@import "@syncfusion/ej2-buttons/styles/material.css";
-@import "@syncfusion/ej2-dropdowns/styles/material.css";
-@import "@syncfusion/ej2-inputs/styles/material.css";
-@import "@syncfusion/ej2-navigations/styles/material.css";
-@import "@syncfusion/ej2-popups/styles/material.css";
-@import "@syncfusion/ej2-react-spreadsheet/styles/material.css";
+.x-spreadsheet-cell {
+  text-align: right !important;
+  direction: rtl !important;
+  font-family: Tahoma, sans-serif !important;
+}
