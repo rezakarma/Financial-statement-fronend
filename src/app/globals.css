@@ -167,6 +167,7 @@
 
 .save-button:hover {
   background-color: #45a049;
+}
 .error .clip .shadow {
   height: 180px;
 }
@@ -223,7 +224,7 @@
   z-index: 9999;
   height: 100%;
   width: 10px;
-  background: linear-gradient(
+  background-color: linear-gradient(
     90deg,
     transparent,
     rgba(173, 173, 173, 0.8),
@@ -240,7 +241,7 @@
   position: relative;
   top: 8%;
   color: white;
-  background: #07b3f9;
+  background-color: #07b3f9;
   border-radius: 50%;
   display: inline-block;
   transform: skew(45deg);
