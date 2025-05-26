@@ -970,6 +970,11 @@ export default function Fortuneexcel() {
           exportToolBarItem(workbookRef),
           importToolBarItem(),
         ]}
+        config={{
+          defaultFontSize: 12,
+          defaultFont: "Tahoma",
+          defaultAlign: "right",
+        }}
       />
     </>
   );

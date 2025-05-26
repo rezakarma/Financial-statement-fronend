@@ -146,7 +146,7 @@
 }
 
 * {
-  direction: rtl;
+  direction: rtl !important;
 }
 
 .univer-container {
