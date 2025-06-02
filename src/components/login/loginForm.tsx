@@ -132,9 +132,10 @@ const LoginForm = () => {
           {
             method: "POST",
             credentials: "include",
-            // headers: {
-            //   Authorization: "Bearer " + result.token,
-            // },
+            headers: {
+              // Authorization: "Bearer " + result.token,
+              "Content-Type": "application/json",
+            },
             body: JSON.stringify({
               uid: result.data.uid,
             }),
@@ -143,7 +144,7 @@ const LoginForm = () => {
 
         if (!setCookie.ok) throw Error("خطایی رخ داده است");
 
-        console.log("setCookie", setCookie)
+        console.log("setCookie", setCookie);
 
         if (result.message && setCookie.ok) {
           toast.success(result.message);
